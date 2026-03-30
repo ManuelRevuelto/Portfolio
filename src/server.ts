@@ -6,13 +6,15 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import matter from 'gray-matter';
 import Mailgun from 'mailgun.js';
 import FormData from 'form-data';
 
-const browserDistFolder = join(import.meta.dirname, '../browser');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const browserDistFolder = join(__dirname, '../browser');
 const mailgun = new Mailgun(FormData);
 const mg = mailgun.client({
   username: 'api',
