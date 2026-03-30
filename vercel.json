@@ -1,12 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/manuelrevuelto.com/browser",
-  "framework": null,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/manuelrevuelto.com/server/server.mjs"
-    }
-  ]
+  "buildCommand": "npm run build && node vercel-build.mjs"
 }

@@ -20,11 +20,15 @@ const mg = mailgun.client({
   username: 'api',
   key: process.env['MAILGUN_API_KEY'] || '',
 });
-// In production: content/ is copied to browser/content/ via angular.json assets config.
-// In development (ng serve): fall back to project root content/ directory.
-const CONTENT_DIR = existsSync(join(browserDistFolder, 'content'))
-  ? join(browserDistFolder, 'content')
-  : join(process.cwd(), 'content');
+// Content directory resolution:
+// 1. Vercel serverless: content/ is copied next to server.mjs
+// 2. Local production: content/ is in browser/content/
+// 3. Local development (ng serve): fall back to project root content/
+const CONTENT_DIR = existsSync(join(__dirname, 'content'))
+  ? join(__dirname, 'content')
+  : existsSync(join(browserDistFolder, 'content'))
+    ? join(browserDistFolder, 'content')
+    : join(process.cwd(), 'content');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -237,3 +241,4 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
 }
 
 export const reqHandler = createNodeRequestHandler(app);
+export default reqHandler;
