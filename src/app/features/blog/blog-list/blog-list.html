@@ -1,0 +1,52 @@
+<div class="pt-24 section">
+  <div class="container">
+
+    <!-- Header -->
+    <div appAnimatedEntry class="mb-12">
+      <p class="font-mono text-accent text-sm mb-2">// blog</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-4">Artículos</h1>
+      <p class="text-text-secondary max-w-xl">
+        Escribo sobre Angular, TypeScript, desarrollo web y buenas prácticas.
+      </p>
+    </div>
+
+    <!-- Tag filter -->
+    @if (allTags().length > 0) {
+      <div appAnimatedEntry class="flex flex-wrap gap-2 mb-10">
+        <button
+          class="tag-secondary cursor-pointer"
+          [class.tag]="selectedTag() === null"
+          (click)="selectedTag.set(null)"
+        >
+          Todos
+        </button>
+        @for (tag of allTags(); track tag) {
+          <button
+            class="tag-secondary cursor-pointer"
+            [class.tag]="selectedTag() === tag"
+            (click)="selectedTag.set(tag)"
+          >
+            {{ tag }}
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (post of filteredPosts(); track post.slug) {
+        <div appAnimatedEntry>
+          <app-blog-card [post]="post" />
+        </div>
+      }
+
+      @if (contentService.posts().length === 0) {
+        <div class="col-span-full text-center py-20 text-text-muted">
+          <p class="text-lg mb-2">Aún no hay artículos publicados.</p>
+          <p class="text-sm">¡Vuelve pronto!</p>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

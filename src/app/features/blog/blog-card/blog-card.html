@@ -1,0 +1,42 @@
+<article class="card flex flex-col overflow-hidden">
+  <!-- Cover image -->
+  @if (post().coverImage) {
+    <a [routerLink]="['/blog', post().slug]">
+      <div class="overflow-hidden" style="aspect-ratio: 16/9; background: var(--color-border-subtle)">
+        <img
+          [src]="post().coverImage"
+          [alt]="post().title"
+          class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        >
+      </div>
+    </a>
+  }
+
+  <div class="p-6 flex flex-col flex-1">
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      @for (tag of post().tags.slice(0, 3); track tag) {
+        <app-tag-badge [label]="tag" />
+      }
+    </div>
+
+    <!-- Title -->
+    <h2 class="font-semibold text-text-primary text-lg mb-2 leading-snug">
+      <a [routerLink]="['/blog', post().slug]" class="hover:text-accent transition-colors">
+        {{ post().title }}
+      </a>
+    </h2>
+
+    <!-- Excerpt -->
+    <p class="text-text-secondary text-sm leading-relaxed flex-1 mb-4">
+      {{ post().excerpt }}
+    </p>
+
+    <!-- Footer -->
+    <div class="flex items-center justify-between text-xs text-text-muted pt-3 border-t"
+         style="border-color: var(--color-border-subtle)">
+      <time [dateTime]="post().date">{{ formatDate(post().date) }}</time>
+      <span class="font-mono">{{ post().readingTimeMinutes | readingTime }}</span>
+    </div>
+  </div>
+</article>

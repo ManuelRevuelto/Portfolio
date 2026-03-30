@@ -1,0 +1,117 @@
+<section class="section" id="contact">
+  <div class="container max-w-2xl mx-auto">
+    <div appAnimatedEntry class="text-center mb-12">
+      <app-section-header
+        eyebrow="// contacto"
+        title="¿Hablamos?"
+        subtitle="¿Tienes un proyecto en mente o simplemente quieres saludar? Escríbeme."
+      />
+    </div>
+
+    <div appAnimatedEntry class="card p-8">
+      @if (contactService.wasSuccessful()) {
+        <div class="text-center py-8">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+               style="background: var(--color-accent-muted); border: 1px solid var(--color-accent-border)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </div>
+          <h3 class="text-text-primary font-semibold text-xl mb-2">¡Mensaje enviado!</h3>
+          <p class="text-text-secondary mb-6">Te responderé lo antes posible.</p>
+          <button class="btn-ghost" (click)="contactService.reset()">Enviar otro mensaje</button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
+          <!-- Name -->
+          <div>
+            <label class="block text-sm font-medium text-text-secondary mb-2" for="name">
+              Nombre
+            </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Tu nombre"
+              class="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted text-sm outline-none transition-colors"
+              style="background: var(--color-border-subtle); border: 1px solid var(--color-border);"
+              [style.border-color]="nameInvalid ? 'var(--color-danger)' : ''"
+              (focus)="onFocus($event)"
+              (blur)="onBlur($event)"
+            >
+            @if (nameInvalid) {
+              <p class="mt-1 text-xs" style="color: var(--color-danger)">El nombre es requerido.</p>
+            }
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium text-text-secondary mb-2" for="email">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="tu@email.com"
+              class="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted text-sm outline-none transition-colors"
+              style="background: var(--color-border-subtle); border: 1px solid var(--color-border);"
+              [style.border-color]="emailInvalid ? 'var(--color-danger)' : ''"
+              (focus)="onFocus($event)"
+              (blur)="onBlur($event)"
+            >
+            @if (emailInvalid) {
+              <p class="mt-1 text-xs" style="color: var(--color-danger)">Introduce un email válido.</p>
+            }
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label class="block text-sm font-medium text-text-secondary mb-2" for="message">
+              Mensaje
+            </label>
+            <textarea
+              id="message"
+              formControlName="message"
+              rows="5"
+              placeholder="Cuéntame en qué puedo ayudarte..."
+              class="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-muted text-sm outline-none transition-colors resize-none"
+              style="background: var(--color-border-subtle); border: 1px solid var(--color-border);"
+              [style.border-color]="messageInvalid ? 'var(--color-danger)' : ''"
+              (focus)="onFocus($event)"
+              (blur)="onBlur($event)"
+            ></textarea>
+            @if (messageInvalid) {
+              <p class="mt-1 text-xs" style="color: var(--color-danger)">El mensaje es requerido (mínimo 10 caracteres).</p>
+            }
+          </div>
+
+          @if (contactService.errorMessage()) {
+            <p class="text-sm p-3 rounded-lg" style="background: rgba(248,81,73,0.1); color: var(--color-danger); border: 1px solid rgba(248,81,73,0.3)">
+              {{ contactService.errorMessage() }}
+            </p>
+          }
+
+          <button
+            type="submit"
+            class="btn-primary w-full justify-center"
+            [disabled]="contactService.isSending()"
+          >
+            @if (contactService.isSending()) {
+              <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+              </svg>
+              Enviando...
+            } @else {
+              Enviar mensaje
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+                <path d="M22 2 11 13"/>
+              </svg>
+            }
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

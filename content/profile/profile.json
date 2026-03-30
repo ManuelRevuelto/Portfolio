@@ -1,0 +1,135 @@
+{
+  "name": "Manuel Revuelto",
+  "title": "Fullstack Developer · +4 años de experiencia",
+  "bio": [
+    "Desarrollador Fullstack con +4 años de experiencia transformando retos de negocio en soluciones técnicas de alto impacto. Mi enfoque se centra en construir arquitecturas robustas y escalables utilizando el ecosistema Angular (v12-21) y Laravel (v9-12), siempre bajo estándares de Clean Code y principios SOLID.",
+    "Tengo amplia experiencia desplegando en entornos productivos con Docker y gestionando datos complejos con SQL Server y MySQL. Me apasiona la colaboración en equipos diversos y el aprendizaje continuo, buscando aportar valor técnico y estratégico desde el primer día para elevar la calidad del producto y la eficiencia del equipo."
+  ],
+  "heroTitles": [
+    "Software Developer",
+    "Angular Specialist",
+    "Fullstack Engineer",
+    "Backend Developer"
+  ],
+  "experience": [
+    {
+      "position": "Desarrollador Fullstack",
+      "company": "Idea Consulting",
+      "location": "Zaragoza, España",
+      "startDate": "2022",
+      "endDate": "Actualidad",
+      "current": true,
+      "highlights": [
+        "Desarrollo de aplicaciones web SPA responsivas con Angular v15+",
+        "Implementación de backends escalables con Laravel y Express",
+        "Desarrollo de APIs RESTful intermedias para integraciones ERP",
+        "Creación de plugins WordPress personalizados (nóminas, vacaciones, empleados)",
+        "Aplicaciones multiplataforma con .NET MAUI",
+        "Gestión de implementaciones en producción con Docker",
+        "Tests unitarios con Jasmine y Karma",
+        "Actualización y mantenimiento de proyectos Angular y Laravel"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Desarrollo de Aplicaciones Multiplataforma",
+      "institution": "IES Ítaca",
+      "location": "Zaragoza, España",
+      "year": "2019 - 2021",
+      "description": "Formación en desarrollo orientado a objetos con Java y conceptos fundamentales de programación."
+    }
+  ],
+  "projectHighlights": [
+    {
+      "name": "Sistema automatizado de control de camiones",
+      "year": "2024",
+      "description": "Portal de lectura de matrículas de camiones para control de seguridad y gestión de cargas.",
+      "highlights": [
+        "Lectura en tiempo real con cámara integrado en API para cargado automatizado de material",
+        "Sincronización simultánea con ERP",
+        "Rediseño de arquitectura de BD para resolver problemas críticos de integridad de datos",
+        "Reducción de incidentes de acceso no autorizado",
+        "Agilización del proceso de carga de mercancías"
+      ],
+      "technologies": [
+        "Angular",
+        "Laravel",
+        "SQL Server",
+        "Docker",
+        "API REST"
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "category": "Frontend",
+      "skills": [
+        { "name": "Angular (v12-21)", "level": 95 },
+        { "name": "TypeScript", "level": 90 },
+        { "name": "RxJS / Signals", "level": 85 },
+        { "name": "HTML5 / CSS3 / SCSS", "level": 95 },
+        { "name": "Tailwind CSS", "level": 90 }
+      ]
+    },
+    {
+      "category": "Backend",
+      "skills": [
+        { "name": "Laravel (v9-12)", "level": 85 },
+        { "name": "Express.js", "level": 75 },
+        { "name": "Node.js", "level": 80 },
+        { "name": "REST APIs", "level": 90 },
+        { "name": "C# / .NET Core", "level": 70 }
+      ]
+    },
+    {
+      "category": "Bases de Datos",
+      "skills": [
+        { "name": "MySQL", "level": 85 },
+        { "name": "SQL Server", "level": 80 },
+        { "name": "Diseño Relacional", "level": 85 }
+      ]
+    },
+    {
+      "category": "DevOps / Herramientas",
+      "skills": [
+        { "name": "Docker", "level": 80 },
+        { "name": "Git / GitHub", "level": 90 },
+        { "name": "Postman", "level": 85 },
+        { "name": "Testing (Jasmine/Vitest)", "level": 75 }
+      ]
+    }
+  ],
+  "allTechs": [
+    "Angular",
+    "TypeScript",
+    "JavaScript",
+    "RxJS",
+    "Signals",
+    "HTML5",
+    "CSS3",
+    "SCSS",
+    "Tailwind CSS",
+    "Laravel",
+    "Express",
+    "Node.js",
+    "REST API",
+    "MySQL",
+    "SQL Server",
+    "C#",
+    ".NET Core",
+    ".NET MAUI",
+    "WordPress",
+    "Java",
+    "Git",
+    "GitHub",
+    "Docker",
+    "Postman",
+    "Jasmine",
+    "Karma",
+    "Vitest",
+    "Clean Code",
+    "SOLID",
+    "VS Code"
+  ]
+}

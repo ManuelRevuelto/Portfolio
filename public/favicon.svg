@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+  <style>
+    /* Estilos por defecto (modo claro) */
+    .logo-letters {
+      fill: #00cccc; /* Tu color cian original */
+    }
+
+    /* Estilos para el modo oscuro del navegador */
+    @media (prefers-color-scheme: dark) {
+      .logo-letters {
+        fill: #33ffff; /* Un cian más brillante para el modo oscuro */
+      }
+    }
+  </style>
+  <path class="logo-letters" d="M38.5,123.5 L38.5,33.5 C38.5,23 30,14.5 19.5,14.5 C9,14.5 0.5,23 0.5,33.5 L0.5,123.5 L0.5,185.5 L38.5,185.5 L38.5,123.5 Z M105.5,14.5 C95,14.5 86.5,23 86.5,33.5 L86.5,123.5 L86.5,185.5 L124.5,185.5 L124.5,123.5 L124.5,33.5 C124.5,23 116,14.5 105.5,14.5 Z M257.5,14.5 C247,14.5 238.5,23 238.5,33.5 L238.5,123.5 L238.5,185.5 L276.5,185.5 L276.5,123.5 L276.5,33.5 C276.5,23 268,14.5 257.5,14.5 Z M167.5,14.5 C157,14.5 148.5,23 148.5,33.5 L148.5,123.5 L148.5,185.5 L186.5,185.5 L186.5,123.5 L186.5,33.5 C186.5,23 178,14.5 167.5,14.5 Z" />
+  <path class="logo-letters" d="M499.5,18.5 L420.5,18.5 C410,18.5 401.5,27 401.5,37.5 L401.5,60.5 L401.5,185.5 L439.5,185.5 L439.5,60.5 L439.5,56.5 L499.5,56.5 L499.5,18.5 Z" />
+</svg>

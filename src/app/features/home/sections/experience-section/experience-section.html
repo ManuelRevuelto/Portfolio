@@ -1,0 +1,86 @@
+<section class="section">
+  <div class="container">
+    <div appAnimatedEntry>
+      <app-section-header
+        eyebrow="// experiencia"
+        title="Mi trayectoria"
+      />
+    </div>
+
+    @if (profileService.profile(); as profile) {
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Work Experience -->
+        <div appAnimatedEntry>
+          <h3 class="font-mono text-accent text-sm mb-6 flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+            Experiencia laboral
+          </h3>
+
+          <div class="relative">
+            <!-- Timeline line -->
+            <div class="absolute left-4 top-0 bottom-0 w-px bg-border"></div>
+
+            <div class="space-y-8">
+              @for (item of profile.experience; track item.company) {
+                <div class="pl-10 relative">
+                  <!-- Dot -->
+                  <div class="absolute left-[13px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent border-2 border-bg-base"></div>
+
+                  <div class="card p-4">
+                    <div class="flex items-start justify-between gap-2 mb-1">
+                      <h4 class="font-semibold text-text-primary">{{ item.position }}</h4>
+                      <span class="text-xs font-mono text-text-muted shrink-0">
+                        {{ item.startDate }} — @if (item.current) { Actualidad } @else { {{ item.endDate }} }
+                      </span>
+                    </div>
+                    <p class="text-accent text-sm mb-2">{{ item.company }} · {{ item.location }}</p>
+                    <ul class="list-disc list-inside text-text-secondary text-sm leading-relaxed mb-3 space-y-1">
+                      @for (highlight of item.highlights.slice(0, 3); track highlight) {
+                        <li>{{ highlight }}</li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div appAnimatedEntry>
+          <h3 class="font-mono text-accent text-sm mb-6 flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+            Formación
+          </h3>
+
+          <div class="relative">
+            <div class="absolute left-4 top-0 bottom-0 w-px bg-border"></div>
+
+            <div class="space-y-8">
+              @for (item of profile.education; track item.institution) {
+                <div class="pl-10 relative">
+                  <div class="absolute left-[13px] top-1.5 w-2.5 h-2.5 rounded-full bg-border border-2 border-bg-base"></div>
+
+                  <div class="card p-4">
+                    <div class="flex items-start justify-between gap-2 mb-1">
+                      <h4 class="font-semibold text-text-primary">{{ item.degree }}</h4>
+                      <span class="text-xs font-mono text-text-muted shrink-0">{{ item.year }}</span>
+                    </div>
+                    <p class="text-accent text-sm mb-2">{{ item.institution }} · {{ item.location }}</p>
+                    <p class="text-text-secondary text-sm leading-relaxed">{{ item.description }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

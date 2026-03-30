@@ -1,0 +1,69 @@
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [class.glass]="scrolled()"
+  [class.bg-transparent]="!scrolled()"
+>
+  <div class="container">
+    <nav class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a routerLink="/" class="font-mono text-accent font-semibold text-lg hover:opacity-80 transition-opacity">
+        mr<span class="cursor-blink text-text-secondary">_</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-1">
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="text-accent"
+              [routerLinkActiveOptions]="{ exact: link.path === '' }"
+              class="px-3 py-2 rounded-md text-sm text-text-secondary hover:text-text-primary transition-colors duration-200"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button
+        class="md:hidden btn-icon"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Abrir menú"
+      >
+        @if (menuOpen()) {
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        } @else {
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        }
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (menuOpen()) {
+    <div class="md:hidden glass border-t border-border-subtle">
+      <ul class="container py-4 flex flex-col gap-1">
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="text-accent"
+              [routerLinkActiveOptions]="{ exact: link.path === '' }"
+              class="block px-3 py-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-bg-card transition-colors"
+              (click)="closeMenu()"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</header>

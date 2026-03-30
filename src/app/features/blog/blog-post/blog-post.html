@@ -1,0 +1,63 @@
+<div class="pt-24 section">
+  <div class="container max-w-3xl">
+
+    <!-- Back link -->
+    <a routerLink="/blog" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors text-sm mb-10">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Volver al blog
+    </a>
+
+    @if (contentService.currentPost(); as post) {
+      <!-- Article header -->
+      <header class="mb-10">
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          @for (tag of post.tags; track tag) {
+            <app-tag-badge [label]="tag" />
+          }
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-4 leading-tight">
+          {{ post.title }}
+        </h1>
+
+        <div class="flex items-center gap-4 text-text-muted text-sm font-mono">
+          <time [dateTime]="post.date">{{ formatDate(post.date) }}</time>
+          <span>·</span>
+          <span>{{ post.readingTimeMinutes | readingTime }}</span>
+        </div>
+      </header>
+
+      <!-- Cover image -->
+      @if (post.coverImage) {
+        <div class="rounded-xl overflow-hidden mb-10" style="aspect-ratio: 16/9; background: var(--color-border-subtle)">
+          <img [src]="post.coverImage" [alt]="post.title" class="w-full h-full object-cover">
+        </div>
+      }
+
+      <!-- Article content -->
+      <article class="prose-portfolio mb-16">
+        <markdown [data]="post.content ?? ''" />
+      </article>
+
+      <!-- Divider -->
+      <hr class="divider mb-10">
+
+      <!-- Comments (Giscus — browser only) -->
+      @if (isBrowser) {
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold text-text-primary mb-6">Comentarios</h2>
+          <div id="giscus-container"></div>
+        </section>
+      }
+
+    } @else {
+      <div class="text-center py-20 text-text-muted">
+        Cargando artículo...
+      </div>
+    }
+
+  </div>
+</div>
