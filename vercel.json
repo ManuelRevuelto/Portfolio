@@ -1,19 +1,25 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/manuelrevuelto.com",
+  "outputDirectory": "dist/manuelrevuelto.com/browser",
+  "installCommand": "npm install",
   "framework": null,
+  "functions": {
+    "api/handler.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "dist/manuelrevuelto.com/server/server.mjs"
-    },
-    {
-      "handle": "filesystem"
+      "dest": "api/handler.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
     },
     {
       "src": "/(.*)",
-      "dest": "dist/manuelrevuelto.com/server/server.mjs"
+      "dest": "api/handler.js"
     }
   ]
 }

@@ -1,0 +1,16 @@
+.env
+.env.local
+.env.*.local
+.git
+.gitignore
+node_modules
+.angular
+.claude
+README.md
+coverage
+src
+tsconfig.json
+angular.json
+karma.conf.js
+test.ts
+*.spec.ts
