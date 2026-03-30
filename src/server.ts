@@ -29,6 +29,15 @@ const angularApp = new AngularNodeAppEngine();
 
 app.use(express.json());
 
+// ─── Serve static files from /browser (FIRST, before API/SSR) ──────────────────
+app.use(
+  express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: false,
+    redirect: false,
+  }),
+);
+
 // ─── API: Get public configuration ──────────────────────────────────────────
 app.get('/api/config', (_req, res) => {
   res.json({
@@ -205,15 +214,6 @@ app.post('/api/contact', async (req, res) => {
     res.status(500).json({ error: 'Failed to send email' });
   }
 });
-
-// ─── Serve static files from /browser ───────────────────────────────────────
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
 
 // ─── Angular SSR handler ─────────────────────────────────────────────────────
 app.use((req, res, next) => {
